@@ -1,0 +1,38 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "default",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "CMAKE_PREFIX_PATH": "D:/hpmicroSDK/sdk_env-1.11.0/hpm_sdk/cmake",
+                "BOARD_SEARCH_PATH": "D:/hpmicroSDK/sdk_env-1.11.0/userdir/boards",
+                "HPM_BUILD_TYPE": "flash_xip",
+                "BOARD": "hpm5361cf",
+                "CMAKE_C_COMPILER": "D:/hpmicroSDK/sdk_env-1.11.0/toolchains/rv32imac_zicsr_zifencei_multilib_b_ext-win/bin/riscv32-unknown-elf-gcc.exe",
+                "CMAKE_CXX_COMPILER": "D:/hpmicroSDK/sdk_env-1.11.0/toolchains/rv32imac_zicsr_zifencei_multilib_b_ext-win/bin/riscv32-unknown-elf-g++.exe"
+            },
+            "environment": {
+                "HPM_SDK_BASE": "D:/hpmicroSDK/sdk_env-1.11.0/hpm_sdk",
+                "GNURISCV_TOOLCHAIN_PATH": "D:/hpmicroSDK/sdk_env-1.11.0/toolchains/rv32imac_zicsr_zifencei_multilib_b_ext-win"
+            }
+        },
+        {
+            "name": "flash_xip Debug",
+            "inherits": "default",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "debug"
+            }
+        },
+        {
+            "name": "flash_xip Release",
+            "inherits": "default",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "release"
+            }
+        }
+    ]
+}

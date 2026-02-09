@@ -1,0 +1,32 @@
+# Build directories
+build/
+hpm5361cf_flash_xip_debug/
+*.o
+*.a
+*.elf
+*.hex
+*.bin
+*.d
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+build.ninja
+.ninja_*
+compile_commands.json
+
+# IDE
+.vscode/settings.json
+.vscode/launch.json
+*.swp
+*.swo
+*~
+
+# IDE Project files
+iar_embedded_workbench/
+segger_embedded_studio/
+
+# OS
+.DS_Store
+Thumbs.db
