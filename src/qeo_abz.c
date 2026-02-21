@@ -199,7 +199,7 @@ void qeo_gen_abz_signal_hardware(void)
     qeo_abz_config_mode(HPM_QEO1, &config1);
 
     /* Configure resolution and maximum frequency */
-    /* for z index */
+    /* for z index, not a z index */
     qeo_abz_set_resolution_lines(TEST_QEO, TEST_QEO_ABZ_LINES);
     qeo_abz_set_resolution_lines(HPM_QEO1, TEST_QEO_ABZ_LINES);
     /* TEST_QEO_ABZ_LINES * 1s / TEST_QEO_ABZ_MAX_FREQ = 4000us, speed should less than 1s / 4000us = 250 r/s */
@@ -242,7 +242,7 @@ int main(void)
     /* Demonstrate software position injection mode */
     //qeo_gen_abz_signal_software();
 
-    //board_delay_ms(100U);
+    board_delay_ms(100U);
 
     /* Demonstrate hardware position input mode */
     init_qeo_pins(TEST_QEO);  /* Initialize QEO output pins for ABZ signals */
@@ -254,7 +254,7 @@ int main(void)
     init_qeiv2_ab_pins(APP_QEI_BASE);
     qeiv2_init();
 
-    for (uint32_t i = 0; i < 10; i++) {
+    for (uint32_t i = 0; i < 3; i++) {
         printf("z: 0x%x, phase: %d\n", qeiv2_get_current_count(APP_QEI_BASE, qeiv2_counter_type_z), qeiv2_get_phase_cnt(APP_QEI_BASE));
         board_delay_ms(3000);
     }

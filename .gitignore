@@ -19,8 +19,8 @@ build.ninja
 compile_commands.json
 
 # IDE
-.vscode/settings.json
-.vscode/launch.json
+# .vscode/settings.json
+# .vscode/launch.json
 *.swp
 *.swo
 *~

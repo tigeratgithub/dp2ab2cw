@@ -1,0 +1,27 @@
+{
+    
+    "cmake.configureEnvironment": {
+            "HPM_SDK_BASE": "D:/hpmicroSDK/sdk_env-1.11.0/hpm_sdk",
+            "GNURISCV_TOOLCHAIN_PATH": "D:/hpmicroSDK/sdk_env-1.11.0/toolchains/rv32imac_zicsr_zifencei_multilib_b_ext-win",
+            "HPM_BOARD_DIR": "D:/hpmicroSDK/sdk_env-1.11.0/userdir/boards",
+            "PATH": "D:/hpmicroSDK/sdk_env-1.11.0/tools/python3;D:/hpmicroSDK/sdk_env-1.11.0/tools/ninja;${env:PATH}"
+        },
+    "MicroPython.executeButton": [
+        {
+            "text": "▶",
+            "tooltip": "运行",
+            "alignment": "left",
+            "command": "extension.executeFile",
+            "priority": 3.5
+        }
+    ],
+    "MicroPython.syncButton": [
+        {
+            "text": "$(sync)",
+            "tooltip": "同步",
+            "alignment": "left",
+            "command": "extension.execute",
+            "priority": 4
+        }
+    ],
+}

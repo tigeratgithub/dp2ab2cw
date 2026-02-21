@@ -1,12 +1,15 @@
 {
 	"folders": [
 		{
+			"name": "dp2ab2cw",
 			"path": "."
 		},
 		{
+			"name": "hpm_sdk",
 			"path": "../../../hpm_sdk"
 		},
 		{
+			"name": "hpm5361cf",
 			"path": "../../boards/hpm5361cf"
 		}
 	],

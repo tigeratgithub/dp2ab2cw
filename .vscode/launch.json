@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "HPM5361-Debug-Full-Featured",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "openocd",
+            "executable": "D:/hpmicroSDK/sdk_env-1.11.0/userdir/apps/dp2ab2cw/build/output/demo.elf",
+            "interface": "jtag",
+            "runToEntryPoint": "main",
+            "toolchainPrefix": "riscv32-unknown-elf-",
+            "gdbPath": "D:/hpmicroSDK/sdk_env-1.11.0/toolchains/rv32imac_zicsr_zifencei_multilib_b_ext-win/bin/riscv32-unknown-elf-gdb.exe",
+            "svdFile": "D:/hpmicroSDK/sdk_env-1.11.0/hpm_sdk/soc/HPM5300/HPM5361/HPM5361_svd.xml", 
+            "configFiles": [
+                "D:/hpmicroSDK/sdk_env-1.11.0/hpm_sdk/boards/openocd/probes/cmsis_dap.cfg",
+                "D:/hpmicroSDK/sdk_env-1.11.0/hpm_sdk/boards/openocd/soc/hpm5300.cfg",
+                "D:/hpmicroSDK/sdk_env-1.11.0/hpm_sdk/boards/openocd/boards/hpm5300evk.cfg"
+            ],
+            "showDevDebugOutput": "raw"
+            // "rtos": "FreeRTOS", 
+            // "overrideLaunchCommands": [
+            //     "interpreter-exec console \"monitor halt\"",
+            //     "interpreter-exec console \"monitor reset init\"",
+            //     "load",
+            //     "interpreter-exec console \"monitor FreeRTOS\""
+            // ]
+        }
+    ]
+}
