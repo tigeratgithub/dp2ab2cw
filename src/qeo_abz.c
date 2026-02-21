@@ -139,14 +139,17 @@ void qeo_gen_abz_signal_software(void)
     qeo_abz_config_mode(TEST_QEO, &config);
 
     /* Set encoder resolution (lines per revolution) */
+    /* ABZ.RESOLUTION */
     qeo_abz_set_resolution_lines(TEST_QEO, TEST_QEO_ABZ_LINES);
     /* Configure maximum frequency based on system clock and target frequency */
+    /* ABZ.LINE_WIDTH = src_freq / (250000 * 4U) */
     if (status_success != qeo_abz_set_max_frequency(TEST_QEO, clock_get_frequency(BOARD_MOTOR_CLK_NAME), TEST_QEO_ABZ_MAX_FREQ)) {
         printf("config QEO abz max frequency failed\n");
         return;
     }
 
     /* Calculate position increment per line (total position range / number of lines) */
+    /** 0x100000000 / 1024 */
     post_unit = QEO_POSITION_MAX_VAL / TEST_QEO_ABZ_LINES;
     /* Calculate delay time to match target frequency */
     if (period_us == 0) {
@@ -156,7 +159,9 @@ void qeo_gen_abz_signal_software(void)
     }
 
     /* Enable software position injection and simulate rotation */
+    /* base->POSTION_SEL = 0x01 */
     qeo_enable_software_position_inject(TEST_QEO);
+    /* 1024 * 2 -> 转2圈, 16个step */
     for (uint32_t i = 0; i < TEST_QEO_ABZ_LINES * 2; i += 16) {
         qeo_software_position_inject(TEST_QEO, post_unit * i);  /* Inject new position */
         /* Wait for ABZ signals to reach injected position (16 steps per delay) */
@@ -194,9 +199,11 @@ void qeo_gen_abz_signal_hardware(void)
     qeo_abz_config_mode(HPM_QEO1, &config1);
 
     /* Configure resolution and maximum frequency */
+    /* for z index */
     qeo_abz_set_resolution_lines(TEST_QEO, TEST_QEO_ABZ_LINES);
     qeo_abz_set_resolution_lines(HPM_QEO1, TEST_QEO_ABZ_LINES);
     /* TEST_QEO_ABZ_LINES * 1s / TEST_QEO_ABZ_MAX_FREQ = 4000us, speed should less than 1s / 4000us = 250 r/s */
+    /* 用于屏蔽过高脉冲？ src_freq / (250000 * 4U) */
     if (status_success != qeo_abz_set_max_frequency(TEST_QEO, clock_get_frequency(BOARD_MOTOR_CLK_NAME), TEST_QEO_ABZ_MAX_FREQ)) {
         printf("config QEO0 abz max frequency failed\n");
         return;
@@ -207,6 +214,7 @@ void qeo_gen_abz_signal_hardware(void)
     }
 
     /* Configure hardware position input from MMC */
+    /* set pos_matrix from xx to yy 当前是2个输出都连接到 */
     trgm_pos_matrix_config(HPM_TRGM0, QEO_TRGM_POS, trgm_pos_matrix_in_from_mmc0_pos0, false);
     mmc_open_loop_pred();
 

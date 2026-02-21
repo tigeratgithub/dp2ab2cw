@@ -12,8 +12,13 @@
 
 #define TEST_MMC HPM_MMC0
 
+/**
+ * @brief open loop pred mode
+ * 
+ */
 void mmc_open_loop_pred(void)
 {
+    /* config mmc clock */
     mmc_set_sysclk_freq(TEST_MMC, clock_get_frequency(BOARD_MOTOR_CLK_NAME));
 
     /* config pred mode */

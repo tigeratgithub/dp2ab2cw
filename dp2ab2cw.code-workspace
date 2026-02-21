@@ -1,10 +1,13 @@
 {
 	"folders": [
 		{
+			"path": "."
+		},
+		{
 			"path": "../../../hpm_sdk"
 		},
 		{
-			"path": "."
+			"path": "../../boards/hpm5361cf"
 		}
 	],
 	"settings": {
