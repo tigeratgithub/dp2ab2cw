@@ -24,4 +24,8 @@
             "priority": 4
         }
     ],
+    "cortex-debug.liveWatchRefreshRate": 500,
+    "cortex-debug.gdbPath": "D:/hpmicroSDK/sdk_env-1.11.0/toolchains/rv32imac_zicsr_zifencei_multilib_b_ext-win/bin/riscv32-unknown-elf-gdb.exe",
+    "cortex-debug.openocdPath": "D:/hpmicroSDK/sdk_env-1.11.0/tools/openocd/openocd.exe",
+
 }
