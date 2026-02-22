@@ -32,8 +32,8 @@
 #define TEST_QE1 HPM_QEO1
 #define QEO_TRGM_POS BOARD_QEO_TRGM_POS
 
-#define TEST_QEO_ABZ_LINES    (1500U)   /* Number of encoder lines per revolution */
-#define TEST_QEO_ABZ_MAX_FREQ (250000U) /* Maximum frequency of ABZ signals in Hz */
+#define TEST_QEO_ABZ_LINES    (185672U)   /* Number of encoder lines per revolution */
+#define TEST_QEO_ABZ_MAX_FREQ (2500000U) /* Maximum frequency of ABZ signals in Hz */
 #define QEO_POSITION_MAX_VAL  (0x100000000UL)  /* Maximum position value (32-bit) */
 
 
@@ -69,7 +69,8 @@ static void qeiv2_init(void)
     qeiv2_phcnt_cmp_match_config_t phcnt_cmp_config = {0};
 
     /*  mode config */
-    mode_config.work_mode = qeiv2_work_mode_abz;
+    mode_config.work_mode = qeiv2_work_mode_ud; //qeiv2_work_mode_pd; //qeiv2_work_mode_abz;
+
     mode_config.spd_tmr_content_sel = qeiv2_spd_tmr_as_spd_tm;
     mode_config.z_count_inc_mode = qeiv2_z_count_inc_on_phase_count_max;
     mode_config.phcnt_max = APP_ENCODER_PHASE_COUNT_PER_REV;
@@ -154,7 +155,7 @@ void qeo_gen_abz_signal_hardware(void)
 
     /* Initialize QEO with default ABZ mode configuration */
     qeo_abz_get_default_mode_config(TEST_QEO, &config);
-    config.output_type = qeo_abz_output_abz;  /*< A and B are orthogonal signals, Z is zero pulse */
+    config.output_type =qeo_abz_output_up_down; //qeo_abz_output_abz;  /*< A and B are orthogonal signals, Z is zero pulse */
 
     qeo_abz_config_mode(TEST_QEO, &config);
     //qeo_abz_config_mode(HPM_QEO1, &config);
