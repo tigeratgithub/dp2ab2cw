@@ -29,11 +29,11 @@ void mmc_open_loop_pred(void)
     mmc_pred_config_mode(TEST_MMC, 0, &config);
 
     /* config pred initial position */
-    mmc_pos_or_delta_pos_input_t pred_pos = {0};
-    mmc_get_default_pos_or_delta_pos_para(TEST_MMC, &pred_pos);
-    pred_pos.speed = -0.004; /* r/s */
-    pred_pos.cmd_mask = mmc_pos_update_speed;
-    mmc_pred_config_pos_para(TEST_MMC, 0, &pred_pos, true);
+    //mmc_pos_or_delta_pos_input_t pred_pos = {0};
+    //mmc_get_default_pos_or_delta_pos_para(TEST_MMC, &pred_pos);
+    //pred_pos.speed = -0.004; /* r/s */
+    //pred_pos.cmd_mask = mmc_pos_update_speed;
+    //mmc_pred_config_pos_para(TEST_MMC, 0, &pred_pos, true);
 
     mmc_enable_pred(TEST_MMC, 0);
     mmc_enable_module(TEST_MMC);
