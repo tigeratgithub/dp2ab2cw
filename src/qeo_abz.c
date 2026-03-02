@@ -27,6 +27,12 @@
 #include "hpm_gpio_drv.h"
 #include "hpm_gpiom_drv.h"
 
+#include "usb_config.h"
+
+extern void webusb_init(uint8_t busid, uint32_t reg_base);
+
+
+
 /* QEO configuration defines */
 #define TEST_QEO BOARD_QEO
 #define TEST_QE1 HPM_QEO1
@@ -190,10 +196,18 @@ void qeo_gen_abz_signal_hardware(void)
 int main(void)
 {
     board_init();
+
+    board_init_usb((USB_Type *)CONFIG_HPM_USBD_BASE);
+    intc_set_irq_priority(CONFIG_HPM_USBD_IRQn, 1);
+    printf("cherryusb device webusb sample.\n");
+    webusb_init(0, CONFIG_HPM_USBD_BASE);
+
     init_qeo_pins(TEST_QEO);  /* Initialize QEO output pins for ABZ signals */
     init_qeo_pins(TEST_QE1);
     init_qeiv2_abz_pins(HPM_QEI0);
 
+
+    
     printf("QEO ABZ example\n");
     qeiv2_init();
     /* Demonstrate software position injection mode */

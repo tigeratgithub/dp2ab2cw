@@ -17,7 +17,8 @@
             },
             "environment": {
                 "HPM_SDK_BASE": "D:/hpmicroSDK/sdk_env-1.11.0/hpm_sdk",
-                "GNURISCV_TOOLCHAIN_PATH": "D:/hpmicroSDK/sdk_env-1.11.0/toolchains/rv32imac_zicsr_zifencei_multilib_b_ext-win"
+                "GNURISCV_TOOLCHAIN_PATH": "D:/hpmicroSDK/sdk_env-1.11.0/toolchains/rv32imac_zicsr_zifencei_multilib_b_ext-win",
+                "python_exec": "D:/hpmicroSDK/sdk_env-1.11.0/tools/python3/python.exe"
             }
         },
         {
