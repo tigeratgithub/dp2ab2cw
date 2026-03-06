@@ -26,6 +26,13 @@
             //     "load",
             //     "interpreter-exec console \"monitor FreeRTOS\""
             // ]
+        },
+        {
+            "name": "调试 CMake 配置过程",
+            "type": "cmake",
+            "request": "launch",
+            "cmakeDebugType": "configure",
+            "clean": false // 设置为 false 可以避免每次都重新生成，减少冲突
         }
     ]
 }
